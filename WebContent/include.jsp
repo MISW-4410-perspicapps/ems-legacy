@@ -6,9 +6,9 @@
 <body> -->
 <%@ page import="com.EMS.entity.Registration" %>
 <%@ page import="java.util.ArrayList,java.util.List" %>
-  <!-- <script src="WebContent/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="WebContent/bootstrap.min.css">
-  <script src="WebContent/jQuery-2.1.4.min.js"></script> -->
+  <script src="jQuery-2.1.4.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <link rel="stylesheet" href="bootstrap.min.css">
   <div style="float: left;">
   	<span style="float: left;color: blue;"><b>RoleType :<%if(session.getAttribute("role").equals(1)){%>Admin<%}%>
 	<%if(session.getAttribute("role").equals(2)){%>Manager<%}%>

@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class DBAccess {
 	
 	static Connection con = null;
-	static  final String url = "jdbc:mysql://localhost:3306/employment";
-	static  final String uname = "root";
-	static  final String pass = "root";
+	static  final String url = "jdbc:mysql://localhost:3306/ems_database";
+	static  final String uname = "ems_user";
+	static  final String pass = "ems_password";
 
 	/*public static Connection getConnection(){
         if (con != null) return con;

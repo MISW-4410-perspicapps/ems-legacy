@@ -19,7 +19,6 @@ import com.EMS.dao.EmployeeDao;
 import com.EMS.entity.ATEDetails;
 import com.EMS.entity.DirectoryDetails;
 import com.EMS.entity.Registration;
-import com.sun.jndi.toolkit.dir.DirSearch;
 
 /**
  * Servlet implementation class ATE

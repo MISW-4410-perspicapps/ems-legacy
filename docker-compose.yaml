@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mysql-ems:
+    image: mysql:8.0
+    container_name: ems_mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: ems_database
+      MYSQL_USER: ems_user
+      MYSQL_PASSWORD: ems_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ems_mysql_data:/var/lib/mysql
+      # Opcional: montar scripts SQL si existen
+      # - ./EMS-Database/EMS-SQL-Scripts.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    command: --default-authentication-plugin=mysql_native_password --sql-mode=""
+
+volumes:
+  ems_mysql_data:
