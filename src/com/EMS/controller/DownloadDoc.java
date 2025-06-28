@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.IOUtils;
 
 import com.EMS.entity.Employeedocs;
 import com.EMS.service.EmployeeService;
@@ -63,7 +63,7 @@ public class DownloadDoc extends HttpServlet {
 			            response.setContentType(doc.getDocType());
 			            Blob testfile = doc.getDocFile();
 			            if(testfile != null){
-				            org.apache.tomcat.util.http.fileupload.IOUtils.copy(testfile.getBinaryStream(), out);
+				            org.apache.commons.io.IOUtils.copy(testfile.getBinaryStream(), out);
 			            }else{
 			            	out.write(0);
 			            }

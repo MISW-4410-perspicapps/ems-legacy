@@ -1,0 +1,42 @@
+# Ignore build artifacts
+build/
+dist/
+target/
+nbproject/private/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.eclipse/
+.metadata/
+.settings/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore temporary files
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+
+# Ignore Maven specific
+.mvn/
+mvnw
+mvnw.cmd
+
+# Ignore git
+.git/
+.gitignore
+
+# Ignore documentation
+*.md
+*.pdf
+
+# Ignore test data
+EMS-Database/Data/
