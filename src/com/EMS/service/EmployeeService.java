@@ -127,20 +127,15 @@ public class EmployeeService {
 
     public static void uploadFileToGCP(String fileName, InputStream inputStream, String token) {
         String url = System.getenv("URL_API");
+        System.out.println("LA URL DEL API es " +url);
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            System.out.println("Entra#4.1");
             HttpPost uploadRequest = new HttpPost(url);
-            System.out.println("Entra#4.2");
             uploadRequest.setHeader("Authorization", token);
-            System.out.println("Entra#4.3");
             InputStreamBody fileBody = new InputStreamBody(inputStream, fileName);
-            System.out.println("Entra#4.4");
             HttpEntity multipartEntity = MultipartEntityBuilder.create()
                     .addPart("files", fileBody)
                     .build();
-            System.out.println("Entra#4.5");
             uploadRequest.setEntity(multipartEntity);
-            System.out.println("Entra#4.6");
             try (CloseableHttpResponse response = httpClient.execute(uploadRequest)) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 System.out.println("Respuesta del servidor: " + statusCode);

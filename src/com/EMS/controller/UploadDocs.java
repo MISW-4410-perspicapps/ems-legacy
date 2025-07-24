@@ -82,7 +82,8 @@ public class UploadDocs extends HttpServlet {
         int eId = (int) session.getAttribute("userId");
         String docName = request.getParameter("docName");
         String docComment = request.getParameter("docComment");
-        String token = request.getParameter("token");        
+        String token = request.getHeader("Authorization");    
+        System.out.println("EL TOKEN ES token" + token);
         int directoryId = Integer.parseInt(request.getParameter("directory"));
         Part doc = request.getPart("docFile");
         InputStream inputstream = null;
