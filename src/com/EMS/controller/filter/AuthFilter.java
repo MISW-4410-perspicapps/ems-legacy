@@ -29,13 +29,16 @@ public class AuthFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         String authHeader = req.getHeader("Authorization");
         res.setHeader("Authorization", authHeader);                   
-        if (authHeader == null) {            
+        if (authHeader == null) {         
+            System.out.println("SACA TOKEN DE SESSION#1 ");
             Object tokenFromSession = req.getSession().getAttribute("token");
+            System.out.println("SACA TOKEN DE SESSION#2 " +tokenFromSession);
             if (tokenFromSession != null) {
                 authHeader = tokenFromSession.toString();
             }            
         }else{
             req.getSession().setAttribute("token",authHeader);
+            System.out.println("SETEA TOKEN EN SESION");
         }
         System.out.println("AuthHeader es "+authHeader);     
         String uri = req.getRequestURI();
