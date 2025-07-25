@@ -44,6 +44,7 @@ public class UploadDocs extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         //request.setAttribute("message", "Welcome...");
+        System.out.println("Entra doGet");
         HttpSession session = request.getSession();
         if (session.getAttribute("userId") != null) {
             int eId = (int) session.getAttribute("userId");
@@ -78,18 +79,23 @@ public class UploadDocs extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
+        System.out.println("Entra doPost");
         HttpSession session = request.getSession();
         int eId = (int) session.getAttribute("userId");
         String docName = request.getParameter("docName");
         String docComment = request.getParameter("docComment");
-        String token = request.getHeader("Authorization");    
-        System.out.println("EL TOKEN ES token" + token);
+        String token = request.getHeader("Authorization");
+        Object tokenFromSession = request.getSession().getAttribute("token");
+        if (tokenFromSession != null) {
+            token = tokenFromSession.toString();
+        }
+        System.out.println("EL TOKEN ES DOCMENTOS " + token);
         int directoryId = Integer.parseInt(request.getParameter("directory"));
         Part doc = request.getPart("docFile");
         InputStream inputstream = null;
         if (directoryId > 0 && docName.length() > 0 && doc.getSize() > 0) {
-            inputstream = doc.getInputStream();            
-            try (InputStream docFile = doc.getInputStream()) {         
+            inputstream = doc.getInputStream();
+            try (InputStream docFile = doc.getInputStream()) {
                 EmployeeService.uploadFileToGCP(docName, docFile, token);
             }
             FunctionResponse fresponse = null;
